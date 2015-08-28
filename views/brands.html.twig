@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Shoes</title>
+    </head>
+    <body>
+
+        <h1>Brands</h1>
+
+        {% if brands is not empty %}
+            <p>Here are all your brands:</p>
+            <ul>
+                {% for brand in brands %}
+                    <li><a href="/brands/{{ brand.getId }}">{{ brand.getName }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h2>There Are Currently No Brands Add Some</h2>
+        {% endif %}
+
+        <form action ='/brands' method='post'>
+            <label for= 'name'>Brand name</label>
+            <input id='name' name='name' type='text'>
+
+            <button type='submit'>Add brand</button>
+        </form>
+        <form action ='/delete_brands' method='post'>
+            <button type='submit'>Clear</button>
+        </form>
+
+        <p><a href='/'>Home</a></p>
+    </body>
+</html>
