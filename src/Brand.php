@@ -16,7 +16,7 @@
 			$this->name = $new_name;
 		}
 		
-		function getId()
+		function getName()
 		{
 			return $this->name;
 		}
@@ -51,7 +51,7 @@
 		
 		function addStore($new_store)
 		{
-			$GLOBALS->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$this->getId()}, {$new_store->getId()});");
+			$GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$this->getId()}, {$new_store->getId()});");
 		}
 		
 		function getStores()
@@ -65,7 +65,7 @@
 				$store_name = $store['name'];
 				$store_id = $store['id'];
 				$new_store = new Store($store_name, $store_id);
-				array_push($store_name, $store_id);
+				array_push($stores, $new_store);
 			}
 			return $stores;
 		}
